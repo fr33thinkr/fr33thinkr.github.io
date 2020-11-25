@@ -2,23 +2,42 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script data-ad-client="ca-pub-2098781549581569" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <meta charset="utf-8">
 <title>Responsive Full Background Image</title>
-  <link href="http://fonts.googleapis.com/css?family=Kotta+One|Cantarell:400,700" rel="stylesheet" type="text/css">
-   <link rel="stylesheet" href="noContact.css">
+ <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Niconne&display=swap" rel="text/stylesheet">
+   <!-- <link rel="stylesheet" href="noContact.css"> -->
   <script language="javascript" type="text/javascript">
   function testJS() {
     var c = document.getElementById('cc').value;
-	var p = document.getElementById('ph').value;
-	var num = c.concat(p);
-        url = 'https://api.whatsapp.com/send?phone=' + encodeURIComponent(num) + '&text=Hii';
-
+	
+	var phoneno = /^\d{10}$/;
+	if (p == "") {
+    alert("You must enter the phone number");
+    return false;
+  }
+  else if(document.getElementById('ph').value.match(phoneno))
+  {
+   var p = document.getElementById('ph').value;
+   var num = c.concat(p);
+	   url = 'https://api.whatsapp.com/send?phone=' + encodeURIComponent(num) + '&text=Hii';
     document.location.href = url;
+  }
+  else
+  {
+     alert("Not a valid Phone Number");
+     return false;
+  }
+  
+	
 }
 </script>
 </head>
 <body>
- <div name="Input" center width=50% height=70% background-color="white" transparent=50%>
+
+<center><h2><img src="images/wp.png" style="height:75px;width:70px"/><font face = "Comic sans MS">Message to anyone over whatsapp without saving number!</font></h2></center>
+ <div name="Input" style="background-color:darkblue;text-align:center; height:200px; padding-top:50px">
  <form name="nocontact">
  <select name="countryCode" id="cc">
 	<option data-countryCode="IN" value="91" Selected>India (+91)</option>
@@ -242,8 +261,9 @@
 		<option data-countryCode="ZW" value="263">Zimbabwe (+263)</option>
 	</optgroup>
 </select>
- <input type=text id="ph">
+ <input type="text" id="ph" onfocus="this.value=''" value="Enter Phone Number"></br></br></br>
  <input type=button value="Generate"  onClick="testJS()"/>
+  <input type=reset value="Clear"/>
  </form>
  </div>
 </body>
